@@ -1,0 +1,23 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "OneEuroFilterUnreal",
+	"Description": "",
+	"Category": "Other",
+	"CreatedBy": "Dario Mazzanti",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "OneEuroFilterUnreal",
+			"Type": "Developer",
+			"LoadingPhase": "Default"
+		}
+	]
+}
