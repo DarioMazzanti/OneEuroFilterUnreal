@@ -22,10 +22,6 @@ In this demo, a random noise is applied to the Transform (position and location)
 
 From within this Actor Blueprint, the filter is represented by a variable called *TransformFilter*. The variable allows to specify the minimum cutoff frequency, the cutoff slope (beta) and the derivate cutoff frequency of the filter (see [OneEuroFilter] documentation for more information). In the future it will also possible to provide a timestamp when filtering data, thus updating the frequency of the filter based on that.
 
-
-```
-
-
 ## Tested
 Windows 10 + Unreal Engine 4.19
 
