@@ -113,7 +113,7 @@ private:
 	FTransform Value;
 	FTransform FilteredValue;
 	TSharedPtr<OneEuroFilter<FVector>>	TheLocationFilter = nullptr;
-	TSharedPtr<OneEuroFilter<FRotator>> TheRotationFilter = nullptr;
+	TSharedPtr<OneEuroFilter<FQuat>> TheRotationFilter = nullptr;
 	TSharedPtr<OneEuroFilter<FVector>>	TheScaleFilter = nullptr;
 };
 

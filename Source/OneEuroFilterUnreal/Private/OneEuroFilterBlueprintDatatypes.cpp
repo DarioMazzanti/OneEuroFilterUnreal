@@ -91,7 +91,7 @@ FOneEuroFilterTransform::FOneEuroFilterTransform(float InFrequency, float InMinC
 	Value = FTransform::Identity;
 	FilteredValue = FTransform::Identity;
 	TheLocationFilter = MakeShareable(new OneEuroFilter<FVector>(Frequency, MinCutoff, Beta, DCutoff));
-	TheRotationFilter = MakeShareable(new OneEuroFilter<FRotator>(Frequency, MinCutoff, Beta, DCutoff));
+	TheRotationFilter = MakeShareable(new OneEuroFilter<FQuat>(Frequency, MinCutoff, Beta, DCutoff));
 	TheScaleFilter =	MakeShareable(new OneEuroFilter<FVector>(Frequency, MinCutoff, Beta, DCutoff));
 };
 
@@ -103,7 +103,7 @@ void FOneEuroFilterTransform::SetValue(FTransform NewValue)
 		FilteredValue.SetLocation(TheLocationFilter->Filter(Value.GetLocation()));
 
 	if (TheRotationFilter.IsValid())
-		FilteredValue.SetRotation(TheRotationFilter->Filter(Value.Rotator()).Quaternion());
+		FilteredValue.SetRotation(TheRotationFilter->Filter(Value.Rotator().Quaternion()));
 
 	if (TheScaleFilter.IsValid())
 		FilteredValue.SetScale3D(TheScaleFilter->Filter(Value.GetScale3D()));
