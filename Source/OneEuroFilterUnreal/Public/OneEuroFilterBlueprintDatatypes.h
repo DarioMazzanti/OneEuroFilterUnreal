@@ -108,6 +108,10 @@ struct FOneEuroFilterTransform : public FOneEuroFilterSettings
 
 	void GetValue(bool bBypassScale, FTransform &Raw, FTransform &Filtered);
 
+	void SetParameters(float InFrequency = 120.0, float InMinCutoff = 1.0, float InBeta = 0.0, float InDCutoff = 1.0);
+
+	void RefreshParameters();
+
 private:
 
 	FTransform Value;

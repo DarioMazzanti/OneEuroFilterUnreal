@@ -82,4 +82,13 @@ void UOneEuroFilterBPFunctionLibrary::SetTransformValue(UPARAM(ref) FOneEuroFilt
 {
 	InTransformFilter.SetValue(NewValue);
 	return;
-};
+}
+void UOneEuroFilterBPFunctionLibrary::SetParameters(UPARAM(ref)FOneEuroFilterTransform & InTransformFilter, float InFrequency, float InMinCutoff, float InBeta, float InDCutoff)
+{
+	InTransformFilter.SetParameters(InFrequency, InMinCutoff, InBeta, InDCutoff);
+}
+void UOneEuroFilterBPFunctionLibrary::RefreshParameters(UPARAM(ref)FOneEuroFilterTransform & InTransformFilter)
+{
+	InTransformFilter.RefreshParameters();
+}
+;

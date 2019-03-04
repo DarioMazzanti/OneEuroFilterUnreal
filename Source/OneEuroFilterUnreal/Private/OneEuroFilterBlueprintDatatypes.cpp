@@ -12,8 +12,6 @@ FOneEuroFilterFloat::FOneEuroFilterFloat(float InFrequency, float InMinCutoff, f
 	Value = 0;
 	FilteredValue = 0;
 	TheFilter = MakeShareable(new OneEuroFilter<float>(Frequency, MinCutoff, Beta, DCutoff));
-
-	UE_LOG(LogTemp, Warning, TEXT("E COD"));
 };
 
 void FOneEuroFilterFloat::SetValue(float NewValue)
@@ -116,4 +114,20 @@ void FOneEuroFilterTransform::GetValue(bool bBypassScale, FTransform &Raw, FTran
 
 	if (bBypassScale)
 		Filtered.SetScale3D(Raw.GetScale3D());
-};
+}
+void FOneEuroFilterTransform::SetParameters(float InFrequency, float InMinCutoff, float InBeta, float InDCutoff)
+{
+	FOneEuroFilterSettings(InFrequency, InMinCutoff, InBeta, InDCutoff);
+
+	TheLocationFilter->UpdateParams(InFrequency, InMinCutoff, InBeta, InDCutoff);
+	TheRotationFilter->UpdateParams(InFrequency, InMinCutoff, InBeta, InDCutoff);
+	TheScaleFilter->UpdateParams(InFrequency, InMinCutoff, InBeta, InDCutoff);
+}
+
+void FOneEuroFilterTransform::RefreshParameters()
+{
+	TheLocationFilter->UpdateParams(Frequency, MinCutoff, Beta, DCutoff);
+	TheRotationFilter->UpdateParams(Frequency, MinCutoff, Beta, DCutoff);
+	TheScaleFilter->UpdateParams(Frequency, MinCutoff, Beta, DCutoff);
+}
+;
