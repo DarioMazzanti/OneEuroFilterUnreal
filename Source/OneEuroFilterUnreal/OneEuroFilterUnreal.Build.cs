@@ -1,6 +1,7 @@
 // Copyright 1998-2018 Epic Games, Inc. All Rights Reserved.
 
 using UnrealBuildTool;
+using System.IO;
 
 public class OneEuroFilterUnreal : ModuleRules
 {
@@ -8,21 +9,8 @@ public class OneEuroFilterUnreal : ModuleRules
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 		
-		PublicIncludePaths.AddRange(
-			new string[] {
-				"OneEuroFilterUnreal/Public"
-				// ... add public include paths required here ...
-			}
-			);
-				
-		
-		PrivateIncludePaths.AddRange(
-			new string[] {
-				"OneEuroFilterUnreal/Private",
-				// ... add other private include paths required here ...
-			}
-			);
-			
+		PrivateIncludePaths.AddRange(new string[] { Path.Combine(ModuleDirectory, "Private") });
+        PublicIncludePaths.AddRange(new string[] { Path.Combine(ModuleDirectory, "Public") });	
 		
 		PublicDependencyModuleNames.AddRange(
 			new string[]
