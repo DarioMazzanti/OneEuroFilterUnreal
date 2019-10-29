@@ -11,12 +11,19 @@ FOneEuroFilterFloat::FOneEuroFilterFloat(float InFrequency, float InMinCutoff, f
 
 	Value = 0;
 	FilteredValue = 0;
-	TheFilter = MakeShareable(new OneEuroFilter<float>(Frequency, MinCutoff, Beta, DCutoff));
+	
 };
 
 void FOneEuroFilterFloat::SetValue(float NewValue)
 {
 	Value = NewValue;
+
+	if (!bInitialized)
+	{
+		TheFilter = MakeShareable(new OneEuroFilter<float>(Frequency, MinCutoff, Beta, DCutoff));
+
+		bInitialized = true;
+	}
 
 	if (TheFilter.IsValid())
 		FilteredValue = TheFilter->Filter(Value);
@@ -41,6 +48,14 @@ FOneEuroFilterVector::FOneEuroFilterVector(float InFrequency, float InMinCutoff,
 
 void FOneEuroFilterVector::SetValue(FVector NewValue)
 {
+
+	if (!bInitialized)
+	{
+		TheFilter = MakeShareable(new OneEuroFilter<FVector>(Frequency, MinCutoff, Beta, DCutoff));
+
+		bInitialized = true;
+	}
+
 	Value = NewValue;
 
 	if (TheFilter.IsValid())
@@ -67,6 +82,14 @@ FOneEuroFilterRotator::FOneEuroFilterRotator(float InFrequency, float InMinCutof
 
 void FOneEuroFilterRotator::SetValue(FRotator NewValue)
 {
+
+	if (!bInitialized)
+	{
+		TheFilter = MakeShareable(new OneEuroFilter<FRotator>(Frequency, MinCutoff, Beta, DCutoff));
+
+		bInitialized = true;
+	}
+
 	Value = NewValue;
 
 	if (TheFilter.IsValid())
@@ -88,13 +111,21 @@ FOneEuroFilterTransform::FOneEuroFilterTransform(float InFrequency, float InMinC
 
 	Value = FTransform::Identity;
 	FilteredValue = FTransform::Identity;
-	TheLocationFilter = MakeShareable(new OneEuroFilter<FVector>(Frequency, MinCutoff, Beta, DCutoff));
-	TheRotationFilter = MakeShareable(new OneEuroFilter<FQuat>(Frequency, MinCutoff, Beta, DCutoff));
-	TheScaleFilter =	MakeShareable(new OneEuroFilter<FVector>(Frequency, MinCutoff, Beta, DCutoff));
 };
 
 void FOneEuroFilterTransform::SetValue(FTransform NewValue)
 {
+
+	if (!bInitialized)
+	{
+		TheLocationFilter = MakeShareable(new OneEuroFilter<FVector>(Frequency, MinCutoff, Beta, DCutoff));
+		TheRotationFilter = MakeShareable(new OneEuroFilter<FQuat>(Frequency, MinCutoff, Beta, DCutoff));
+		TheScaleFilter = MakeShareable(new OneEuroFilter<FVector>(Frequency, MinCutoff, Beta, DCutoff));
+
+		bInitialized = true;
+	}
+
+
 	Value = NewValue;
 
 	if (TheLocationFilter.IsValid())

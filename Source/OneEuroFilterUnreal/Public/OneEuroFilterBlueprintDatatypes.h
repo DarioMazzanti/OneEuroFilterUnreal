@@ -27,6 +27,9 @@ struct FOneEuroFilterSettings
 		float DCutoff = 1;
 
 
+	bool bInitialized = false;
+
+
 	FOneEuroFilterSettings(float InFrequency = 120.0, float InMinCutoff = 1.0, float InBeta = 0.0, float InDCutoff = 1.0)
 	{
 		Frequency = InFrequency;
@@ -93,6 +96,8 @@ private:
 	FRotator Value;
 	FRotator FilteredValue;
 	TSharedPtr<OneEuroFilter<FRotator>> TheFilter = nullptr;
+
+	
 };
 
 
@@ -119,5 +124,6 @@ private:
 	TSharedPtr<OneEuroFilter<FVector>>	TheLocationFilter = nullptr;
 	TSharedPtr<OneEuroFilter<FQuat>> TheRotationFilter = nullptr;
 	TSharedPtr<OneEuroFilter<FVector>>	TheScaleFilter = nullptr;
+
 };
 
