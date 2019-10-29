@@ -117,7 +117,7 @@ FilteredValue = MyDoubleFilter->Filter(IncomingNoisyValue, YourTimestamp);
 You can place and call this or similar code where you see fit.
 
 ## Tested
-Windows 10 + Unreal Engine 4.19
+Windows 10 + Unreal Engine 4.23
 
 ## Todos
  - Further Testing
@@ -127,7 +127,7 @@ Windows 10 + Unreal Engine 4.19
   
 ___
 This utility is developed and maintained by [Dario Mazzanti](https://www.dariomazzanti.com).  
-*This README file was last updated on 2018-12-18 by Dario Mazzanti.*
+*This README file was last updated on 2019-10-29 by Dario Mazzanti.*
 
 
 
