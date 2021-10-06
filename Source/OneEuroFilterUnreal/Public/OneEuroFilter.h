@@ -103,6 +103,8 @@ public:
 	
 
 	FDataType GetCurrValue();
+	
+	void Reset();
 
 
 	double Alpha(double InCutoff);
@@ -221,6 +223,12 @@ template<class FDataType>
 FDataType OneEuroFilter<FDataType>::GetCurrValue()
 {
 	return CurrValue;
+}
+
+template <class FDataType>
+void OneEuroFilter<FDataType>::Reset()
+{
+	InitFilters();
 }
 
 template <class FDataType>
